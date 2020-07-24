@@ -17,7 +17,7 @@ set /p inputForDistanceCalculation="(optional) Enter input file (press enter to 
 if NOT "%inputForDistanceCalculation%" == "" (
     python distanceCalculation.py %inputForDistanceCalculation%
 ) else (
-    python distanceCalculation.py application.csv
+    python distanceCalculation.py
 )
 
 echo done.%NL%
