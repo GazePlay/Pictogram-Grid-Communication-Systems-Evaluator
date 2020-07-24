@@ -191,8 +191,6 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
         # On calcule la somme des poids entre les arcs
         totalWeight += minWeight
 
-    print(coupleGraphe.edges)
-    print(coupleGraphe.nodes)
     # On applique à nouveau une recherche du plus court chemin dans le sous graphe
     shortestpath = nx.shortest_path(coupleGraphe, source="home", target="end")
 
