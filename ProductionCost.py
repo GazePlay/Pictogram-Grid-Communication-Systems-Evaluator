@@ -13,10 +13,8 @@ resultat = "Resultat.txt"
 if len(sys.argv) == 3:
     if sys.argv[1] == "-in":
         phraseEntree = sys.argv[2]
-        print("phrase entree maj : " + phraseEntree)
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
-        print("phrase sortie maj : " + resultat)
     else:
         print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
@@ -26,19 +24,15 @@ elif len(sys.argv) == 5:
         sys.exit(2)
     if sys.argv[1] == "-in":
         phraseEntree = sys.argv[2]
-        print("phrase entree maj : " + phraseEntree)
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
-        print("phrase sortie maj : " + resultat)
     else:
         print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[3] == "-in":
         phraseEntree = sys.argv[4]
-        print("phrase entree maj : " + phraseEntree)
     elif sys.argv[3] == "-out":
         resultat = sys.argv[4]
-        print("phrase sortie maj : " + resultat)
     else:
         print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
