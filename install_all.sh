@@ -13,7 +13,7 @@ read -p "(optional) Enter input file (press enter to skip): " inputForDistanceCa
 
 if [ "$inputForDistanceCalculation" != "" ]
 then
-    python distanceCalculation.py %inputForDistanceCalculation%
+    python distanceCalculation.py $inputForDistanceCalculation
 else
     python distanceCalculation.py
 fi
@@ -28,13 +28,13 @@ if [ "$inputForProductionCost" != "" ]
 then
     if [ "$outputForProductionCost" != "" ]
     then
-        python ProductionCost.py -in %inputForProductionCost% -out %outputForProductionCost%
+        python ProductionCost.py -in $inputForProductionCost -out $outputForProductionCost
     else
-        python ProductionCost.py -in %inputForProductionCost%
+        python ProductionCost.py -in $inputForProductionCost
     fi
 elif [ "$outputForProductionCost" != "" ]
   then
-    python ProductionCost.py -out %outputForProductionCost%
+    python ProductionCost.py -out $outputForProductionCost
 else
     python ProductionCost.py
 fi
@@ -42,4 +42,4 @@ fi
 printf "done.\n"
 echo "Shortest Path is:"
 
-cat Resultat.txt
+cat $outputForProductionCost

@@ -42,5 +42,5 @@ echo done.%NL%
 
 echo Shortest Path is:
 
-set /p Build=<Resultat.txt
+set /p Build=<%outputForProductionCost%
 echo %Build%
