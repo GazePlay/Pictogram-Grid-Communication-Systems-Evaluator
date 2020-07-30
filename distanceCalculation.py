@@ -86,17 +86,14 @@ for i in range(0, len(disTab)):
 				pictoDistance=math.sqrt(squaredDistance)
 
 				#Ecriture du résultat dans un fichier
-				bowsFile.write(mot+"\t"+refID+"\t"+ID+"\t"+str(pictoDistance)+"\n")
-				bowsFile.write(mot2+"\t"+ID+"\t"+refID+"\t"+str(pictoDistance)+"\n")
+				bowsFile.write(mot+"\t"+refID+"\t"+ID+"\t"+str(pictoDistance*m+n)+"\n")
+				bowsFile.write(mot2+"\t"+ID+"\t"+refID+"\t"+str(pictoDistance*m+n)+"\n")
 	
 	#On écrit le lien entre le pictogramme et la page
 	if linkCount < len(linksList):
-		#On calcule la disantce entre le pictogramme en haut à gauche avec x=1 et y=1 et celui en bas à doite x=4 et y=8
-		squaredDistance2 =(1-4)**2+(1-8)**2
-		pictoToPage=math.sqrt(squaredDistance2)
 
 		#Ecriture du résultat dans un fichier
-		bowsFile.write("Lien Picto Page"+"\t"+linksList[linkCount][0]+"\t"+linksList[linkCount][1]+"\t"+ str(pictoToPage*m+n)+"\n")
+		bowsFile.write("Lien Picto Page"+"\t"+linksList[linkCount][0]+"\t"+linksList[linkCount][1]+"\t"+ str(n)+"\n")
 		linkCount+=1
 
 	#On écrit le lien entre la page et le pictogramme
@@ -105,7 +102,7 @@ for i in range(0, len(disTab)):
 	pageToPicto=math.sqrt(squaredDistance3)
 
 	#Ecriture du résultat dans un fichier
-	bowsFile.write("Lien Page Picto"+"\t"+currentPage+"\t"+disTab[i][0]+"\t"+str(pageToPicto)+"\n")
+	bowsFile.write("Lien Page Picto"+"\t"+currentPage+"\t"+disTab[i][0]+"\t"+str(pageToPicto*m+n)+"\n")
 
 
 bowsFile.close()
