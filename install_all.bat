@@ -42,5 +42,10 @@ echo done.%NL%
 
 echo Shortest Path is:
 
-set /p Build=<%outputForProductionCost%
+
+if NOT "%outputForProductionCost%" == "" (
+   set /p Build=<%outputForProductionCost%
+) else (
+    set /p Build=<Resultat.txt
+)
 echo %Build%

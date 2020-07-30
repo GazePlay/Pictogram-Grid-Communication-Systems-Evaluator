@@ -1,19 +1,29 @@
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
 '''
 Code créé pour calculer la distance entre les pictogrammes d'une application de CAA
-Prend en compte la difficulté du mouvement et la difficulté de la sélection 
+Prend en compte la difficulté du mouvement et la difficulté de la sélection
 '''
-
-#!/usr/bin/env python
-# -*- coding : utf-8 -*-
 
 #Importation du module mathématiques
 import math
+import sys
 
-#Fichier brut à traiter
-rawFile=open("ProloquoBrut.csv","r",encoding="utf8")
+inputFile = "ProloquoBrut.csv"
 
-#Fichier d'écriture des arcs
-bowsFile=open("ArcsEtDistances.csv","w",encoding="utf8")
+if len(sys.argv) == 2 :
+    inputFile = sys.argv[1]
+elif len(sys.argv) > 2 :
+    print ("Error: Zero or One argument needed")
+    sys.exit(2)
+
+print ("input file is " + inputFile)
+# Fichier brut à traiter
+rawFile = open(inputFile, "r")
+
+# Fichier d'écriture des arcs
+bowsFile = open("ArcsEtDistances.csv", "w")
 
 #Création de la liste des distances
 disTab=[]
