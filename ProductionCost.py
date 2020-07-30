@@ -16,33 +16,32 @@ if len(sys.argv) == 3:
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
     else:
-        print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
 elif len(sys.argv) == 5:
     if sys.argv[1] == sys.argv[3]:
-        print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[1] == "-in":
         phraseEntree = sys.argv[2]
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
     else:
-        print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[3] == "-in":
         phraseEntree = sys.argv[4]
     elif sys.argv[3] == "-out":
         resultat = sys.argv[4]
     else:
-        print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
 elif len(sys.argv) != 1:
-    print ("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+    print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
     sys.exit(2)
 
-
-print ("input file is " + phraseEntree)
-print ("output file is " + resultat)
+print("input file is " + phraseEntree)
+print("output file is " + resultat)
 
 text = open(phraseEntree, "r")
 end = open(resultat, "w")

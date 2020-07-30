@@ -6,19 +6,19 @@ Code créé pour calculer la distance entre les pictogrammes d'une application d
 Prend en compte la difficulté du mouvement et la difficulté de la sélection
 '''
 
-#Importation du module mathématiques
+# Importation du module mathématiques
 import math
 import sys
 
 inputFile = "ProloquoBrut.csv"
 
-if len(sys.argv) == 2 :
+if len(sys.argv) == 2:
     inputFile = sys.argv[1]
-elif len(sys.argv) > 2 :
-    print ("Error: Zero or One argument needed")
+elif len(sys.argv) > 2:
+    print("Error: Zero or One argument needed")
     sys.exit(2)
 
-print ("input file is " + inputFile)
+print("input file is " + inputFile)
 # Fichier brut à traiter
 rawFile = open(inputFile, "r")
 
@@ -95,25 +95,26 @@ for i in range(0, len(disTab)):
                 squaredDistance = (x1 - x2) ** 2 + (y1 - y2) ** 2
                 pictoDistance = math.sqrt(squaredDistance)
 
-				#Ecriture du résultat dans un fichier
-                bowsFile.write(mot+"\t"+refID+"\t"+ID+"\t"+str(pictoDistance*m+n)+"\n")
-                bowsFile.write(mot2+"\t"+ID+"\t"+refID+"\t"+str(pictoDistance*m+n)+"\n")
+                # Ecriture du résultat dans un fichier
+                bowsFile.write(mot + "\t" + refID + "\t" + ID + "\t" + str(pictoDistance * m + n) + "\n")
+                bowsFile.write(mot2 + "\t" + ID + "\t" + refID + "\t" + str(pictoDistance * m + n) + "\n")
 
-	#On écrit le lien entre le pictogramme et la page
-	if linkCount < len(linksList):
+        # On écrit le lien entre le pictogramme et la page
+        if linkCount < len(linksList):
+            # Ecriture du résultat dans un fichier
+            bowsFile.write(
+                "Lien Picto Page" + "\t" + linksList[linkCount][0] + "\t" + linksList[linkCount][1] + "\t" + str(
+                    n) + "\n")
+            linkCount += 1
 
-		#Ecriture du résultat dans un fichier
-		bowsFile.write("Lien Picto Page"+"\t"+linksList[linkCount][0]+"\t"+linksList[linkCount][1]+"\t"+ str(n)+"\n")
-		linkCount+=1
+        # On écrit le lien entre la page et le pictogramme
+        # On calcule la disantce entre le lien de la page et des pictogrammes à partir du pictogramme en haut à gauche avec x=1 et y=1
+        squaredDistance3 = (1 - x1) ** 2 + (1 - y1) ** 2
+        pageToPicto = math.sqrt(squaredDistance3)
 
-	#On écrit le lien entre la page et le pictogramme
-	#On calcule la disantce entre le lien de la page et des pictogrammes à partir du pictogramme en haut à gauche avec x=1 et y=1 
-	squaredDistance3=(1-x1)**2+(1-y1)**2
-	pageToPicto=math.sqrt(squaredDistance3)
-
-	#Ecriture du résultat dans un fichier
-	bowsFile.write("Lien Page Picto"+"\t"+currentPage+"\t"+disTab[i][0]+"\t"+str(pageToPicto*m+n)+"\n")
-
+        # Ecriture du résultat dans un fichier
+        bowsFile.write(
+            "Lien Page Picto" + "\t" + currentPage + "\t" + disTab[i][0] + "\t" + str(pageToPicto * m + n) + "\n")
 
 bowsFile.close()
 rawFile.close()
