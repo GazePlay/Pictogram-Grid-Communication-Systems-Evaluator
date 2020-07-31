@@ -1,0 +1,18 @@
+i	i@home	want@home	30.0
+want	want@home	i@home	30.0
+i	i@home	go@home	35.8113883008419
+go	go@home	i@home	35.8113883008419
+i	i@home	places_r@home	31.18033988749895
+places_r	places_r@home	i@home	31.18033988749895
+Lien Picto Page	places_r@home	places	20
+Lien Page Picto	home	i@home	0.0
+want	want@home	go@home	27.071067811865476
+go	go@home	want@home	27.071067811865476
+want	want@home	places_r@home	31.18033988749895
+places_r	places_r@home	want@home	31.18033988749895
+Lien Page Picto	home	want@home	2.0
+go	go@home	places_r@home	31.18033988749895
+places_r	places_r@home	go@home	31.18033988749895
+Lien Page Picto	home	go@home	3.1622776601683795
+Lien Page Picto	home	places_r@home	2.23606797749979
+Lien Page Picto	places	park@places	1.0
