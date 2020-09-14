@@ -22,7 +22,7 @@ On the Github you will find at your disposal :
 
  * 2 Python files: 
  
- ** "distanceCalculation.py", which creates a graph from the pictogram file. To create the graph, it will create the arcs necessary to represent the passage from one pictogram to another. The weight of each arc will depend on the nature of the pitcograms, the distance between the pictograms, the difficulty of movement and the difficulty of selection. 
+1. "distanceCalculation.py", which creates a graph from the pictogram file. To create the graph, it will create the arcs necessary to represent the passage from one pictogram to another. The weight of each arc will depend on the nature of the pitcograms, the distance between the pictograms, the difficulty of movement and the difficulty of selection. 
  
  Five different calculations are therefore made: 
  * Pictogram to pictogram : C=D(P1,P2)m+n
@@ -31,7 +31,7 @@ On the Github you will find at your disposal :
  * Page to pictogram : C=D(P(1,1),P2)m+n
  * Page to pictogram that links to a page : C=D(P(1,1),P2)m
  
- ** "ProductionCost.py" which calculates the production cost of a sentence in the application.
+2. "ProductionCost.py" which calculates the production cost of a sentence in the application.
 
  
  * 2 .csv files: "ProloquoBrut.csv" which corresponds to our list of pictograms and "ArcsEtdistances.csv" which corresponds to our list of arcs created from the first .csv file.
