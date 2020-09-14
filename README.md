@@ -10,16 +10,17 @@ To start the project you will first need a file listing the pictograms of the AA
 Required facilities
 -
 
-Pour que ce système fonctionne il faudra diposer:
- * Une version récente du logiciel Python (7 ou 8)
- * Le package Networkx ("NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks") https://networkx.github.io/
- * La 
+In order for this system to work, it will be necessary to dipose:
+ * A recent version of Python software (7 or 8)
+ * The Networkx package ("NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks"): https://networkx.github.io/
+ * The matplotlib library: https://matplotlib.org/
 
 Listing des fichiers
 -
 
+Sur le Github vous trouverez à votre disposition :
 
---> 2 Corpus 
+ * 2 fichiers de listing des applications : "ProloquoCanadien.odt" et "ProloquoBrut.csv" ils sont identiques le csv est simplement celui 
 --> 2 codes 
 --> 1 Sortie 
 
