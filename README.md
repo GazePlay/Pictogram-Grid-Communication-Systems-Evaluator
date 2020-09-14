@@ -15,29 +15,43 @@ In order for this system to work, it will be necessary to dipose:
  * The Networkx package ("NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks"): https://networkx.github.io/
  * The matplotlib library: https://matplotlib.org/
 
-Listing des fichiers
+Listing of files
 -
 
-Sur le Github vous trouverez à votre disposition :
+On the Github you will find at your disposal :
 
- * 2 fichiers de listing des applications : "ProloquoCanadien.odt" et "ProloquoBrut.csv" ils sont identiques le csv est simplement celui 
---> 2 codes 
---> 1 Sortie 
+ * 2 Python files: 
+ 
+ ** "distanceCalculation.py", which creates a graph from the pictogram file. To create the graph, it will create the arcs necessary to represent the passage from one pictogram to another. The weight of each arc will depend on the nature of the pitcograms, the distance between the pictograms, the difficulty of movement and the difficulty of selection. 
+ 
+ Five different calculations are therefore made: 
+ * Pictogram to pictogram : C=D(P1,P2)m+n
+ * Pictogram to pictogram that links to a page : C=D(P1,P2)m
+ * Pictogram that links to a page to page : C=n
+ * Page to pictogram : C=D(P(1,1),P2)m+n
+ * Page to pictogram that links to a page : C=D(P(1,1),P2)m
+ 
+ ** "ProductionCost.py" which calculates the production cost of a sentence in the application.
 
-Etapes d'utilisation
+ 
+ * 2 .csv files: "ProloquoBrut.csv" which corresponds to our list of pictograms and "ArcsEtdistances.csv" which corresponds to our list of arcs created from the first .csv file.
+ * 1 .txt file: "phraseEnter.txt" which contains the phrase or the corpus of phrase for which we want to know the production cost.
+ * 1 .odt file: "ProloquoCanadien.odt" which contains the unformatted description of our pictogram list.
+ 
+Steps of use
 -
 
+* Step 1: Create the graph corresponding to the possible navigations in the application
+** Run the script "distanceCalculation.py" to update the file "ArcsAndDistances.csv".
 
---> 1 corpus 
---> 2 Distance
---> 3 Arcset D
---> 4 prodCost
---> 5 fichier sortie 
+* Step2 2: Extract the production cost of a sentence
+** Insert in the text file "phraseEnter.txt" the phrases for which you want to know the cost.
+** Run the script "ProductionCost.py" and save the result.
 
 Versions
 -
 
-Dernière version le : 01/08/2020
+Last version on: 2020/08
 
 Auteurs 
 -
