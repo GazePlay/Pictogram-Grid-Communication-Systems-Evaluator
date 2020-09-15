@@ -40,11 +40,11 @@ Steps of use
 -
 
 * Step 1: Create the graph corresponding to the possible navigations in the application
-** Run the script "**distanceCalculation.py**" to update the file "**ArcsAndDistances.csv**".
+ Run the script "**distanceCalculation.py**" to update the file "**ArcsAndDistances.csv**".
 
 * Step2 2: Extract the production cost of a sentence
-** Insert in the text file "**phraseEnter.txt**" the phrases for which you want to know the cost.
-** Run the script "**ProductionCost.py**" and save the result.
+ Insert in the text file "**phraseEnter.txt**" the phrases for which you want to know the cost.
+ Run the script "**ProductionCost.py**" and save the result.
 
 Versions
 -
@@ -59,4 +59,6 @@ Lucie, Sébastien
 Liens bibliographiques
 -
 
---> Mettre le lien de l'article 
+This work is inspired by the article :
+
+Lucie Chasseur, Marion Dohen, Benjamin Lecouteux, Sébastien Riou, Amélie Rochet-Capellan, et al..Evaluation of the acceptability and usability of augmentative and alternative communication (AAC)tools: the example of pictogram grid communication systems with voice output. ACM SIGACCESS Conference on Computers and Accessibility, 2020, Athènes, Greece. 10.1145. hal-02896668 https://hal.univ-grenoble-alpes.fr/hal-02896668
