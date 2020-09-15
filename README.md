@@ -42,7 +42,7 @@ Steps of use
 * Step 1: Create the graph corresponding to the possible navigations in the application
  Run the script "**distanceCalculation.py**" to update the file "**ArcsAndDistances.csv**".
 
-* Step2 2: Extract the production cost of a sentence
+* Step 2: Extract the production cost of a sentence
  Insert in the text file "**phraseEnter.txt**" the phrases for which you want to know the cost.
  Run the script "**ProductionCost.py**" and save the result.
 
@@ -54,7 +54,7 @@ Last version on: 2020/08
 Auteurs 
 -
 
-Lucie, Sébastien
+Lucie Chasseur, Sébastien Riou 
 
 Liens bibliographiques
 -
