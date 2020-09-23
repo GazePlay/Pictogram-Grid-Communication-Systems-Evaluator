@@ -54,7 +54,9 @@ Last version on: 2020/09/18
 Auteurs 
 -
 
-Lucie Chasseur, Sébastien Riou 
+Lucie Chasseur : https://github.com/LucieChasseur
+
+Sébastien Riou : https://github.com/kuhlkrein
 
 Liens bibliographiques
 -
