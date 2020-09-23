@@ -30,9 +30,8 @@ On the Github you will find at your disposal :
  * Page to pictogram that links to a page: C=D(P(1,1),P2)m
  
   2. "**ProductionCost.py**" which calculates the production cost of a sentence in the application.
-
  
- * Two .csv files: "**ProloquoBrut.csv**" which corresponds to our list of pictograms and "**ArcsEtdistances.csv**" which corresponds to our list of arcs created from the first .csv file.
+ * Two .csv files: "**ProloquoBrut.csv**" which corresponds to our list of pictograms and "**ArcsEtDistances.csv**" which corresponds to our list of arcs created from the first .csv file.
  * One .txt file: "**phraseEnter.txt**" which contains the phrase or the corpus of phrase for which we want to know the production cost.
  * One .odt file: "**ProloquoCanadien.odt**" which contains the unformatted description of our pictogram list.
  
