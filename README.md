@@ -23,16 +23,16 @@ On the Github you will find at your disposal :
  * Two Python files: 
  
   1. "**distanceCalculation.py**", which creates a graph from the pictogram file. To create the graph, it will create the arcs necessary to represent the passage from one pictogram to another. The weight of each arc will depend on the nature of the pitcograms, the distance between the pictograms, the difficulty of movement and the difficulty of selection. Five different calculations are therefore made: 
- * Pictogram to pictogram : C=D(P1,P2)m+n
- * Pictogram to pictogram that links to a page : C=D(P1,P2)m
- * Pictogram that links to a page to page : C=n
- * Page to pictogram : C=D(P(1,1),P2)m+n
- * Page to pictogram that links to a page : C=D(P(1,1),P2)m
+ * Pictogram to pictogram: C=D(P1,P2)m+n
+ * Pictogram to pictogram that links to a page: C=D(P1,P2)m
+ * Pictogram that links to a page to page: C=n
+ * Page to pictogram: C=D(P(1,1),P2)m+n
+ * Page to pictogram that links to a page: C=D(P(1,1),P2)m
  
   2. "**ProductionCost.py**" which calculates the production cost of a sentence in the application.
 
  
- * Two .csv files: "**ProloquoBrut.csv**" which corresponds to our list of pictograms and "ArcsEtdistances.csv" which corresponds to our list of arcs created from the first .csv file.
+ * Two .csv files: "**ProloquoBrut.csv**" which corresponds to our list of pictograms and "**ArcsEtdistances.csv**" which corresponds to our list of arcs created from the first .csv file.
  * One .txt file: "**phraseEnter.txt**" which contains the phrase or the corpus of phrase for which we want to know the production cost.
  * One .odt file: "**ProloquoCanadien.odt**" which contains the unformatted description of our pictogram list.
  
@@ -40,10 +40,10 @@ Steps of use
 -
 
 * Step 1: Create the graph corresponding to the possible navigations in the application
- Run the script "**distanceCalculation.py**" to update the file "**ArcsAndDistances.csv**".
+ Run the script "**distanceCalculation.py**" to update the file "**ArcsEtDistances.csv**".
 
 * Step 2: Extract the production cost of a sentence
- Insert in the text file "**phraseEnter.txt**" the phrases for which you want to know the cost.
+ Insert in the text file "**phraseEntrée.txt**" the phrases for which you want to know the cost.
  Run the script "**ProductionCost.py**" and save the result.
 
 Versions
