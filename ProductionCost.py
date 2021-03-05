@@ -16,28 +16,33 @@ if len(sys.argv) == 3:
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
     else:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
 elif len(sys.argv) == 5:
     if sys.argv[1] == sys.argv[3]:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[1] == "-in":
-        phraseEntree = sys.argv[2]
+        phraseEntree = sys.argv[2]        
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
     else:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[3] == "-in":
         phraseEntree = sys.argv[4]
     elif sys.argv[3] == "-out":
         resultat = sys.argv[4]
     else:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
 elif len(sys.argv) != 1:
-    print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+    print(
+        "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
     sys.exit(2)
 
 print("input file is " + phraseEntree)
@@ -64,7 +69,7 @@ edgeList = tableau associatif de tous les arcs avec en clé le noeud tête et en
 
 def initialNode(text, nodeList, edgeList):
     path = []
-    startNode = "home"
+    startNode = "accueil"
     stock = []
     totalWeight = 0
     # On parcours le fichier texte
@@ -145,11 +150,12 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
     # On parcours la phrase
     for word in words:
         minWeight = 10000
-        # On stocke dans une variable les mots "candidats" pour créer le plus court chemin
+        # On stocke dans une variable les mots "candidats" pour créer le plus court chemin        
         candidates = textToNodes(word, nodeList)
+
         # Pour chaque candidat
         for candidate in candidates:
-            # On ajoute les candidats comme noeuds du souso graphe
+            # On ajoute les candidats comme noeuds du sous graphe
             coupleGraphe.add_node(candidate)
 
             # Quand on arrive à l fin d ela phrase
@@ -158,12 +164,15 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
                 coupleGraphe.add_edge(candidate, "end", weight=0)
             elif index == 0:
                 # On créé un arc "end" de poids 0
-                coupleGraphe.add_edge("home", candidate, weight=0)
+                coupleGraphe.add_edge("accueil", candidate, weight=0)
 
             # On parcours la liste des noeuds initiaux
             for firstNode in initialNodes:
                 # On extrait le plus court chemin entre le premier noeud et le candidat avec la fonctionn "shortest_path "fonction Networkx
-                path = nx.shortest_path(G, source=firstNode, target=candidate)
+                try:
+                    path = nx.shortest_path(G, source=firstNode, target=candidate)
+                except nx.NetworkXNoPath:
+                    print ("No path between %s and %s." % (firstNode, candidate))
 
                 # On initialise le poids
                 weight = 0
@@ -173,7 +182,7 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
                     for edge in edgePrevNode:
                         # On vérifie que le premier elt de la variable arc = shortest path de i
                         if edge[0] == path[i]:
-                            weight += edge[1]
+                            weight += edge[1]                                                        
 
                 # Si le poids est inférieur au poids minimum
                 if weight < minWeight:
@@ -191,13 +200,14 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
         totalWeight += minWeight
 
     # On applique à nouveau une recherche du plus court chemin dans le sous graphe
-    shortestpath = nx.shortest_path(coupleGraphe, source="home", target="end")
+    shortestpath = nx.shortest_path(
+        coupleGraphe, source="accueil", target="end")
 
     # On céé le chemin final
     wordIndex = 0
     # On parcours la liste des chemins
     for path in pathList:
-        if (shortestpath[wordIndex] == path[0]) & (shortestpath[wordIndex + 1] == path[-1]):
+        if (shortestpath[wordIndex] == path[0]) and (shortestpath[wordIndex + 1] == path[-1]):
             for words in path:
                 finalPath.append(words)
             wordIndex = wordIndex + 1
@@ -218,14 +228,13 @@ f = open("ArcsEtDistances.csv", "r")
 
 edgeList = {}
 
-# ~ On parcours le fichier pour déterminer les noeuds, les arcs et les poids
+# On parcours le fichier pour déterminer les noeuds, les arcs et les poids
 for line in f:
     line = line.strip()
     col = line.split('\t')
 
-    # création de la liste des noeuds
+    # Addition du noeud au graphe
     G.add_node(col[1])
-    nodeList = list(G.nodes())
 
     # Création des arcs avec leurs poids
     G.add_edge(col[1], col[2], weight=col[3])
@@ -236,6 +245,9 @@ for line in f:
     else:
         edgeList[col[1]] = [(col[2], float(col[3]))]
 
+# création de la liste des noeuds
+nodeList = list(G.nodes())
+
 result = initialNode(text, nodeList, edgeList)
 
 # Ecriture du résultat dans un fichier
@@ -243,7 +255,7 @@ for elt in result:
     end.write(elt + "\n")
 
 # On choisi le type d'algorithme qui gère la disposition des noeuds dans l'espace
-pos = nx.spring_layout(G)
+# pos = nx.spring_layout(G)
 
-f.close()
+# f.close()
 text.close()
