@@ -1,8 +1,12 @@
 # coding=utf-8
 # networkx package pour le graphe
+import time
+start_time = time.time()
+
 import networkx as nx
 from networkx import *
 import sys
+
 
 # matplotlib package et pyplot pour la visualisation
 import matplotlib.pyplot as plt
@@ -219,34 +223,69 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
 
     return weightedPath
 
+import pickle
 
-# On créé le graph G
-G = nx.DiGraph()
+def save_obj(obj, name ):
+    with open(name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-# On ouvre le fichier contenant la liste des pictogrammes
-f = open("ArcsEtDistances.csv", "r")
+def load_obj(name ):
+    with open(name + '.pkl', 'rb') as f:
+        return pickle.load(f)
 
-edgeList = {}
+# # stocker la taille actuelle et l'heure de la dernière modification du fichier 'ArcsEtDistances.csv'
+# import os
+# sizeCsv = os.stat('ArcsEtDistances.csv').st_size
+# modTimeCsv = os.stat('ArcsEtDistances.csv').st_mtime
 
-# On parcours le fichier pour déterminer les noeuds, les arcs et les poids
-for line in f:
-    line = line.strip()
-    col = line.split('\t')
+# # vérifier l'existence du fichier 'stat'
+# if (os.path.exists('stat.txt')):
+#     # vérifier si les valeurs actuelles de sizeCsv et de modTimeCsv sont égales à celles de stat.txt
+#     with open("stat.txt", "w") as file: 
+#         #écrire sizeCsv et modTimeCsv dans le fichier 
+#         if (file.read() == sizeCsv + '-' + modTimeCsv):
 
-    # Addition du noeud au graphe
-    G.add_node(col[1])
+# else:
+#     # créer fichier stat.txt
+#     with open("stat.txt", "w") as file: 
+#         #écrire sizeCsv et modTimeCsv dans le fichier 
+#         file.write(sizeCsv,"-", modTimeCsv) 
+         
 
-    # Création des arcs avec leurs poids
-    G.add_edge(col[1], col[2], weight=col[3])
+# # On créé le graph G
+# G = nx.DiGraph()
 
-    # Création d'un tableau associatif qui comprendra les noeuds et les poids
-    if col[1] in edgeList.keys():
-        edgeList[col[1]].append((col[2], float(col[3])))
-    else:
-        edgeList[col[1]] = [(col[2], float(col[3]))]
+# # On ouvre le fichier contenant la liste des pictogrammes
+# f = open("ArcsEtDistances.csv", "r")
 
-# création de la liste des noeuds
-nodeList = list(G.nodes())
+# edgeList = {}
+
+# # On parcours le fichier pour déterminer les noeuds, les arcs et les poids
+# for line in f:
+#     line = line.strip()
+#     col = line.split('\t')
+
+#     # Addition du noeud au graphe
+#     G.add_node(col[1])
+
+#     # Création des arcs avec leurs poids
+#     G.add_edge(col[1], col[2], weight=col[3])
+
+#     # Création d'un tableau associatif qui comprendra les noeuds et les poids
+#     if col[1] in edgeList.keys():
+#         edgeList[col[1]].append((col[2], float(col[3])))
+#     else:
+#         edgeList[col[1]] = [(col[2], float(col[3]))]
+
+# # création de la liste des noeuds
+# nodeList = list(G.nodes())
+
+# save_obj(edgeList, 'edges')
+# save_obj(nodeList, 'nodes')
+
+G = nx.read_gpickle("graph.txt")
+nodeList = load_obj('nodes')
+edgeList = load_obj('edges')
 
 result = initialNode(text, nodeList, edgeList)
 
@@ -259,3 +298,5 @@ for elt in result:
 
 # f.close()
 text.close()
+
+print("--- %s seconds ---" % '{:5.5}'.format(time.time() - start_time))
