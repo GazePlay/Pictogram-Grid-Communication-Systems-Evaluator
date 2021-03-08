@@ -1,8 +1,13 @@
 # coding=utf-8
+import time
+start_time = time.time()
+
 # networkx package pour le graphe
 import networkx as nx
 from networkx import *
 import sys
+import os
+import pickle
 
 # matplotlib package et pyplot pour la visualisation
 import matplotlib.pyplot as plt
@@ -16,28 +21,33 @@ if len(sys.argv) == 3:
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
     else:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
 elif len(sys.argv) == 5:
     if sys.argv[1] == sys.argv[3]:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[1] == "-in":
-        phraseEntree = sys.argv[2]
+        phraseEntree = sys.argv[2]        
     elif sys.argv[1] == "-out":
         resultat = sys.argv[2]
     else:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
     if sys.argv[3] == "-in":
         phraseEntree = sys.argv[4]
     elif sys.argv[3] == "-out":
         resultat = sys.argv[4]
     else:
-        print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+        print(
+            "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
         sys.exit(2)
 elif len(sys.argv) != 1:
-    print("Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
+    print(
+        "Usage: python ProductionCost.py [-in inputFileName] [-out outputFileName]")
     sys.exit(2)
 
 print("input file is " + phraseEntree)
@@ -64,7 +74,7 @@ edgeList = tableau associatif de tous les arcs avec en clé le noeud tête et en
 
 def initialNode(text, nodeList, edgeList):
     path = []
-    startNode = "home"
+    startNode = "accueil"
     stock = []
     totalWeight = 0
     # On parcours le fichier texte
@@ -145,11 +155,12 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
     # On parcours la phrase
     for word in words:
         minWeight = 10000
-        # On stocke dans une variable les mots "candidats" pour créer le plus court chemin
+        # On stocke dans une variable les mots "candidats" pour créer le plus court chemin        
         candidates = textToNodes(word, nodeList)
+
         # Pour chaque candidat
         for candidate in candidates:
-            # On ajoute les candidats comme noeuds du souso graphe
+            # On ajoute les candidats comme noeuds du sous graphe
             coupleGraphe.add_node(candidate)
 
             # Quand on arrive à l fin d ela phrase
@@ -158,12 +169,15 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
                 coupleGraphe.add_edge(candidate, "end", weight=0)
             elif index == 0:
                 # On créé un arc "end" de poids 0
-                coupleGraphe.add_edge("home", candidate, weight=0)
+                coupleGraphe.add_edge("accueil", candidate, weight=0)
 
             # On parcours la liste des noeuds initiaux
             for firstNode in initialNodes:
                 # On extrait le plus court chemin entre le premier noeud et le candidat avec la fonctionn "shortest_path "fonction Networkx
-                path = nx.shortest_path(G, source=firstNode, target=candidate)
+                try:
+                    path = nx.shortest_path(G, source=firstNode, target=candidate)
+                except nx.NetworkXNoPath:
+                    print ("No path between %s and %s." % (firstNode, candidate))
 
                 # On initialise le poids
                 weight = 0
@@ -173,7 +187,7 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
                     for edge in edgePrevNode:
                         # On vérifie que le premier elt de la variable arc = shortest path de i
                         if edge[0] == path[i]:
-                            weight += edge[1]
+                            weight += edge[1]                                                        
 
                 # Si le poids est inférieur au poids minimum
                 if weight < minWeight:
@@ -191,13 +205,16 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
         totalWeight += minWeight
 
     # On applique à nouveau une recherche du plus court chemin dans le sous graphe
-    shortestpath = nx.shortest_path(coupleGraphe, source="home", target="end")
-
+    try:
+        shortestpath = nx.shortest_path(coupleGraphe, source="accueil", target="end")
+    except nx.NetworkXNoPath:
+        print ("No path between %s and %s. Please check the input phrase" % ("accueil", "end"))
+        sys.exit()
     # On céé le chemin final
     wordIndex = 0
     # On parcours la liste des chemins
     for path in pathList:
-        if (shortestpath[wordIndex] == path[0]) & (shortestpath[wordIndex + 1] == path[-1]):
+        if (shortestpath[wordIndex] == path[0]) and (shortestpath[wordIndex + 1] == path[-1]):
             for words in path:
                 finalPath.append(words)
             wordIndex = wordIndex + 1
@@ -209,32 +226,83 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
 
     return weightedPath
 
+# Fonction qui stocke un objet dans un fichier .pkl
+'''
+obj = lobjet à stocker
+name = nom du fichier créé
+'''
+def save_obj(obj, name ):
+    with open(name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-# On créé le graph G
-G = nx.DiGraph()
+# Fonction qui récupere un objet contenu dans un fichier .pkl
+'''
+name = nom du fichier cible
+'''
+def load_obj(name ):
+    with open(name + '.pkl', 'rb') as f:
+        return pickle.load(f)
 
-# On ouvre le fichier contenant la liste des pictogrammes
-f = open("ArcsEtDistances.csv", "r")
+# # stocker la taille actuelle et l'heure de la dernière modification du fichier 'ArcsEtDistances.csv'
+sizeCsv = os.stat('ArcsEtDistances.csv').st_size
+modTimeCsv = os.stat('ArcsEtDistances.csv').st_mtime
+fileStats = str(sizeCsv) + '-' + str(modTimeCsv)
 
-edgeList = {}
+# vérifier l'existence du fichier 'stat.txt'
+if (not os.path.exists('stat.txt')):
+    # create empty file
+    open("stat.txt", "a").close()
 
-# ~ On parcours le fichier pour déterminer les noeuds, les arcs et les poids
-for line in f:
-    line = line.strip()
-    col = line.split('\t')
+# vérifier l'existence du fichier 'grap.txt'
+if (not os.path.exists('graph.txt')):
+    # create empty file
+    open("graph.txt", "a").close()
 
-    # création de la liste des noeuds
-    G.add_node(col[1])
-    nodeList = list(G.nodes())
+# vérifier si les valeurs actuelles de sizeCsv et de modTimeCsv sont égales à celles du fichier stat.txt
+with open("stat.txt", "r") as file: 
+    #Si distanceCalculation.csv a été modifié, on crée à nouveau le graphe, la liste de noeuds et la table de liens. 
+    if (file.read() != fileStats):
+        
+        # # On créé le graph G
+        G = nx.DiGraph()
 
-    # Création des arcs avec leurs poids
-    G.add_edge(col[1], col[2], weight=col[3])
+        # # On ouvre le fichier contenant la liste des pictogrammes
+        f = open("ArcsEtDistances.csv", "r")
 
-    # Création d'un tableau associatif qui comprendra les noeuds et les poids
-    if col[1] in edgeList.keys():
-        edgeList[col[1]].append((col[2], float(col[3])))
-    else:
-        edgeList[col[1]] = [(col[2], float(col[3]))]
+        edgeList = {}
+
+        # # On parcours le fichier pour déterminer les noeuds, les arcs et les poids
+        for line in f:
+            line = line.strip()
+            col = line.split('\t')
+
+            # Addition du noeud au graphe
+            G.add_node(col[1])
+
+            # Création des arcs avec leurs poids
+            G.add_edge(col[1], col[2], weight=col[3])
+
+            # Création d'un tableau associatif qui comprendra les noeuds et les poids
+            if col[1] in edgeList.keys():
+                edgeList[col[1]].append((col[2], float(col[3])))
+            else:
+                edgeList[col[1]] = [(col[2], float(col[3]))]
+
+        # # création de la liste des noeuds
+        nodeList = list(G.nodes())
+
+        nx.write_gpickle(G, "graph.txt")
+        save_obj(edgeList, 'edges')
+        save_obj(nodeList, 'nodes')
+    
+# métre-a-jour fichier stat.txt
+with open("stat.txt", "w") as file: 
+    file.writelines([fileStats])
+
+# Lire le graphe, la liste de noeuds et la table de liens stockés en mémoire  
+G = nx.read_gpickle("graph.txt")
+nodeList = load_obj('nodes')
+edgeList = load_obj('edges')
 
 result = initialNode(text, nodeList, edgeList)
 
@@ -243,7 +311,9 @@ for elt in result:
     end.write(elt + "\n")
 
 # On choisi le type d'algorithme qui gère la disposition des noeuds dans l'espace
-pos = nx.spring_layout(G)
+# pos = nx.spring_layout(G)
 
-f.close()
+# f.close()
 text.close()
+
+print("--- %s seconds ---" % '{:5.5}'.format(time.time() - start_time))
