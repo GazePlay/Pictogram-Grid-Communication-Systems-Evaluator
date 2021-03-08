@@ -1,12 +1,13 @@
 # coding=utf-8
-# networkx package pour le graphe
 import time
 start_time = time.time()
 
+# networkx package pour le graphe
 import networkx as nx
 from networkx import *
 import sys
-
+import os
+import pickle
 
 # matplotlib package et pyplot pour la visualisation
 import matplotlib.pyplot as plt
@@ -204,9 +205,11 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
         totalWeight += minWeight
 
     # On applique à nouveau une recherche du plus court chemin dans le sous graphe
-    shortestpath = nx.shortest_path(
-        coupleGraphe, source="accueil", target="end")
-
+    try:
+        shortestpath = nx.shortest_path(coupleGraphe, source="accueil", target="end")
+    except nx.NetworkXNoPath:
+        print ("No path between %s and %s. Please check the input phrase" % ("accueil", "end"))
+        sys.exit()
     # On céé le chemin final
     wordIndex = 0
     # On parcours la liste des chemins
@@ -223,66 +226,80 @@ def shortestPath(initialNode, sentance, nodeList, edgeList):
 
     return weightedPath
 
-import pickle
-
+# Fonction qui stocke un objet dans un fichier .pkl
+'''
+obj = lobjet à stocker
+name = nom du fichier créé
+'''
 def save_obj(obj, name ):
     with open(name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
+# Fonction qui récupere un objet contenu dans un fichier .pkl
+'''
+name = nom du fichier cible
+'''
 def load_obj(name ):
     with open(name + '.pkl', 'rb') as f:
         return pickle.load(f)
 
 # # stocker la taille actuelle et l'heure de la dernière modification du fichier 'ArcsEtDistances.csv'
-# import os
-# sizeCsv = os.stat('ArcsEtDistances.csv').st_size
-# modTimeCsv = os.stat('ArcsEtDistances.csv').st_mtime
+sizeCsv = os.stat('ArcsEtDistances.csv').st_size
+modTimeCsv = os.stat('ArcsEtDistances.csv').st_mtime
+fileStats = str(sizeCsv) + '-' + str(modTimeCsv)
 
-# # vérifier l'existence du fichier 'stat'
-# if (os.path.exists('stat.txt')):
-#     # vérifier si les valeurs actuelles de sizeCsv et de modTimeCsv sont égales à celles de stat.txt
-#     with open("stat.txt", "w") as file: 
-#         #écrire sizeCsv et modTimeCsv dans le fichier 
-#         if (file.read() == sizeCsv + '-' + modTimeCsv):
+# vérifier l'existence du fichier 'stat.txt'
+if (not os.path.exists('stat.txt')):
+    # create empty file
+    open("stat.txt", "a").close()
 
-# else:
-#     # créer fichier stat.txt
-#     with open("stat.txt", "w") as file: 
-#         #écrire sizeCsv et modTimeCsv dans le fichier 
-#         file.write(sizeCsv,"-", modTimeCsv) 
-         
+# vérifier l'existence du fichier 'grap.txt'
+if (not os.path.exists('graph.txt')):
+    # create empty file
+    open("graph.txt", "a").close()
 
-# # On créé le graph G
-# G = nx.DiGraph()
+# vérifier si les valeurs actuelles de sizeCsv et de modTimeCsv sont égales à celles du fichier stat.txt
+with open("stat.txt", "r") as file: 
+    #Si distanceCalculation.csv a été modifié, on crée à nouveau le graphe, la liste de noeuds et la table de liens. 
+    if (file.read() != fileStats):
+        
+        # # On créé le graph G
+        G = nx.DiGraph()
 
-# # On ouvre le fichier contenant la liste des pictogrammes
-# f = open("ArcsEtDistances.csv", "r")
+        # # On ouvre le fichier contenant la liste des pictogrammes
+        f = open("ArcsEtDistances.csv", "r")
 
-# edgeList = {}
+        edgeList = {}
 
-# # On parcours le fichier pour déterminer les noeuds, les arcs et les poids
-# for line in f:
-#     line = line.strip()
-#     col = line.split('\t')
+        # # On parcours le fichier pour déterminer les noeuds, les arcs et les poids
+        for line in f:
+            line = line.strip()
+            col = line.split('\t')
 
-#     # Addition du noeud au graphe
-#     G.add_node(col[1])
+            # Addition du noeud au graphe
+            G.add_node(col[1])
 
-#     # Création des arcs avec leurs poids
-#     G.add_edge(col[1], col[2], weight=col[3])
+            # Création des arcs avec leurs poids
+            G.add_edge(col[1], col[2], weight=col[3])
 
-#     # Création d'un tableau associatif qui comprendra les noeuds et les poids
-#     if col[1] in edgeList.keys():
-#         edgeList[col[1]].append((col[2], float(col[3])))
-#     else:
-#         edgeList[col[1]] = [(col[2], float(col[3]))]
+            # Création d'un tableau associatif qui comprendra les noeuds et les poids
+            if col[1] in edgeList.keys():
+                edgeList[col[1]].append((col[2], float(col[3])))
+            else:
+                edgeList[col[1]] = [(col[2], float(col[3]))]
 
-# # création de la liste des noeuds
-# nodeList = list(G.nodes())
+        # # création de la liste des noeuds
+        nodeList = list(G.nodes())
 
-# save_obj(edgeList, 'edges')
-# save_obj(nodeList, 'nodes')
+        nx.write_gpickle(G, "graph.txt")
+        save_obj(edgeList, 'edges')
+        save_obj(nodeList, 'nodes')
+    
+# métre-a-jour fichier stat.txt
+with open("stat.txt", "w") as file: 
+    file.writelines([fileStats])
 
+# Lire le graphe, la liste de noeuds et la table de liens stockés en mémoire  
 G = nx.read_gpickle("graph.txt")
 nodeList = load_obj('nodes')
 edgeList = load_obj('edges')
