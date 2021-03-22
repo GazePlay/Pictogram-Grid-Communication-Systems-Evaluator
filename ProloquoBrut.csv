@@ -40,6 +40,8 @@ AIDE_R	3	8	accueil	aide_R@accueil
 			aide_R@accueil	aide_accueil
 PLUS	4	8	accueil	plus@accueil
 			plus@accueil	accueil_-_2
+FLÈCHE	0	1	accueil_-_2	flèche@accueil_-_2
+			flèche@accueil_-_2	accueil
 NOURRITURE_R	1	1	accueil_-_2	nourriture_R@accueil_-_2
 			nourriture_R@accueil_-_2	nourriture_accueil
 CONJONCTIONS_R	2	1	accueil_-_2	conjonctions_R@accueil_-_2
@@ -3098,7 +3100,7 @@ MACHINE À BOULE	2	8	électronique_choses_accueil_-_2	machine_à_boule@électron
 RETOUR	4	8	électronique_choses_accueil_-_2	retour@électronique_choses_accueil_-_2
 			retour@électronique_choses_accueil_-_2	électronique_choses_accueil
 FLÈCHE	0	1	meubles_choses_accueil	flèche@meubles_choses_accueil
-			flèche@meubles_choses_accueil	choses@accueil
+			flèche@meubles_choses_accueil	choses_accueil
 JE	1	1	meubles_choses_accueil	je@meubles_choses_accueil
 TU	2	1	meubles_choses_accueil	tu@meubles_choses_accueil
 FENÊTRE	3	1	meubles_choses_accueil	fenêtre@meubles_choses_accueil
@@ -3131,7 +3133,7 @@ LIT	3	8	meubles_choses_accueil	lit@meubles_choses_accueil
 PLUS	4	8	meubles_choses_accueil	plus@meubles_choses_accueil
 			plus@meubles_choses_accueil	meubles_choses_accueil_-_2
 FLÈCHE	0	1	meubles_choses_accueil_-_2	flèche@meubles_choses_accueil_-_2
-			flèche@meubles_choses_accueil_-_2	choses@accueil
+			flèche@meubles_choses_accueil_-_2	choses_accueil
 ÉLECTRO-MÉNAGERS_R	1	1	meubles_choses_accueil_-_2	électro-ménagers_R@meubles_choses_accueil_-_2
 			électro-ménagers_R@meubles_choses_accueil_-_2	électro-ménagers_meubles_choses_accueil
 FOUR GRILLE-PAIN	2	1	meubles_choses_accueil_-_2	four_grille-pain@meubles_choses_accueil_-_2
@@ -7730,7 +7732,7 @@ $	1	7	ponctuation_nombres_argent_acheter_mots_descriptifs_accueil_-_2	$@ponctuat
 €	1	8	ponctuation_nombres_argent_acheter_mots_descriptifs_accueil_-_2	€@ponctuation_nombres_argent_acheter_mots_descriptifs_accueil_-_2
 £	2	1	ponctuation_nombres_argent_acheter_mots_descriptifs_accueil_-_2	£@ponctuation_nombres_argent_acheter_mots_descriptifs_accueil_-_2
 FLÈCHE	0	1	taille_et_vitesse_acheter_mots_descriptifs_accueil	flèche@taille_et_vitesse_acheter_mots_descriptifs_accueil
-			flèche@taille_et_vitesse_acheter_mots_descriptifs_accueil	acheter_mots_descriptifs
+			flèche@taille_et_vitesse_acheter_mots_descriptifs_accueil	acheter_mots_descriptifs_accueil
 JE	1	1	taille_et_vitesse_acheter_mots_descriptifs_accueil	je@taille_et_vitesse_acheter_mots_descriptifs_accueil
 TU	2	1	taille_et_vitesse_acheter_mots_descriptifs_accueil	tu@taille_et_vitesse_acheter_mots_descriptifs_accueil
 LENT	3	1	taille_et_vitesse_acheter_mots_descriptifs_accueil	lent@taille_et_vitesse_acheter_mots_descriptifs_accueil
@@ -7753,7 +7755,7 @@ BAS	2	8	taille_et_vitesse_acheter_mots_descriptifs_accueil	bas@taille_et_vitesse
 PLUS	4	8	taille_et_vitesse_acheter_mots_descriptifs_accueil	plus@taille_et_vitesse_acheter_mots_descriptifs_accueil
 			plus@taille_et_vitesse_acheter_mots_descriptifs_accueil	taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2
 FLÈCHE	0	1	taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2	flèche@taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2
-			flèche@taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2	acheter_mots_descriptifs
+			flèche@taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2	acheter_mots_descriptifs_accueil
 TROP GRAND	1	1	taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2	trop_grand@taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2
 TROP PETIT	1	2	taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2	trop_petit@taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2
 EXTRA-LARGE	1	3	taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2	extra-large@taille_et_vitesse_acheter_mots_descriptifs_accueil_-_2
@@ -11350,7 +11352,7 @@ EXCITANT	3	8	aujourd'hui_à_l'école_exemples_d'activités_accueil	excitant@aujo
 MOTS D'ACCUEIL_R	4	8	aujourd'hui_à_l'école_exemples_d'activités_accueil	mots_d'accueil_R@aujourd'hui_à_l'école_exemples_d'activités_accueil
 			mots_d'accueil_R@aujourd'hui_à_l'école_exemples_d'activités_accueil	mots_d'accueil_aujourd'hui_à_l'école_exemples_d'activités_accueil
 FLÈCHE	0	1	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	flèche@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
-			flèche@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	aujourd'hui_à_l'école_exemples_d'activités_accueil_exemples_d'activités_accueil
+			flèche@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	aujourd'hui_à_l'école_exemples_d'activités_accueil
 JE	1	1	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	je@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
 TU	2	1	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	tu@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
 ÉDUCATRICE	3	1	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	éducatrice@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
@@ -11376,7 +11378,7 @@ DIRECTRICE	1	8	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
 ÉDUCATEUR	2	8	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	éducateur@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
 SECRÉTAIRE	3	8	professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil	secrétaire@professeurs_aujourd'hui_à_l'école_exemples_d'activités_accueil
 FLÈCHE	0	1	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	flèche@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil
-			flèche@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	aujourd'hui_à_l'école_exemples_d'activités_accueil_activités
+			flèche@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	aujourd'hui_à_l'école_exemples_d'activités_accueil
 JE	1	1	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	je@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil
 TU	2	1	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	tu@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil
 VOISIN	3	1	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	voisin@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil
@@ -11398,7 +11400,7 @@ BLONDE	2	8	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	blonde@ami
 PLUS	4	4	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	plus@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil
 			plus@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2
 FLÈCHE	0	1	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2	flèche@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2
-			flèche@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2	aujourd'hui_à_l'école_exemples_d'activités_accueil_activités
+			flèche@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2	aujourd'hui_à_l'école_exemples_d'activités_accueil
 COLOCATAIRE	1	1	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2	colocataire@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2
 RETOUR	4	8	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2	retour@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2
 			retour@amis_aujourd'hui_à_l'école_exemples_d'activités_accueil_-_2	amis_aujourd'hui_à_l'école_exemples_d'activités_accueil
@@ -12376,7 +12378,7 @@ SPECTACLES_R	1	8	divertissement_accueil_-_2	spectacles_R@divertissement_accueil_
 RETOUR	4	8	divertissement_accueil_-_2	retour@divertissement_accueil_-_2
 			retour@divertissement_accueil_-_2	divertissement_accueil
 FLÈCHE	0	1	ordinateurs_divertissement_accueil	flèche@ordinateurs_divertissement_accueil
-			flèche@ordinateurs_divertissement_accueil	divertissement_divertissement_accueil_-_2
+			flèche@ordinateurs_divertissement_accueil	divertissement_accueil_-_2
 JE	1	1	ordinateurs_divertissement_accueil	je@ordinateurs_divertissement_accueil
 TU 	2	1	ordinateurs_divertissement_accueil	tu@ordinateurs_divertissement_accueil
 E-MAIL	3	1	ordinateurs_divertissement_accueil	e-mail@ordinateurs_divertissement_accueil
@@ -12403,7 +12405,7 @@ C'EST FINI	2	8	ordinateurs_divertissement_accueil	c'est_fini@ordinateurs_diverti
 PLUS	4	8	ordinateurs_divertissement_accueil	plus@ordinateurs_divertissement_accueil
 			plus@ordinateurs_divertissement_accueil	ordinateurs_divertissement_accueil_-_2
 FLÈCHE	0	1	ordinateurs_divertissement_accueil_-_2	flèche@ordinateurs_divertissement_accueil_-_2
-			flèche@ordinateurs_divertissement_accueil_-_2	divertissement_divertissement_accueil_-_2
+			flèche@ordinateurs_divertissement_accueil_-_2	divertissement_accueil_-_2
 CHATTER	1	1	ordinateurs_divertissement_accueil_-_2	chatter@ordinateurs_divertissement_accueil_-_2
 FIL	2	1	ordinateurs_divertissement_accueil_-_2	fil@ordinateurs_divertissement_accueil_-_2
 POWER BAR	3	1	ordinateurs_divertissement_accueil_-_2	power_bar@ordinateurs_divertissement_accueil_-_2
@@ -12431,7 +12433,7 @@ WIFI	3	8	ordinateurs_divertissement_accueil_-_2	wifi@ordinateurs_divertissement_
 RETOUR	4	8	ordinateurs_divertissement_accueil_-_2	retour@ordinateurs_divertissement_accueil_-_2
 			retour@ordinateurs_divertissement_accueil_-_2	ordinateurs_divertissement_accueil
 FLÈCHE	0	1	sports_divertissement_accueil	flèche@sports_divertissement_accueil
-			flèche@sports_divertissement_accueil	divertissement_divertissement_accueil_-_2
+			flèche@sports_divertissement_accueil	divertissement_accueil_-_2
 JE	1	1	sports_divertissement_accueil	je@sports_divertissement_accueil
 TU	2	1	sports_divertissement_accueil	tu@sports_divertissement_accueil
 PATIN À GLACE	3	1	sports_divertissement_accueil	patin_à_glace@sports_divertissement_accueil
